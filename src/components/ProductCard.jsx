@@ -69,7 +69,7 @@ export const ProductCard = ({
 
         {!showDetails && (
           <h1
-            className={`heading-category absolute w-full text-center text-5xl font-bold top-[12%] z-0 tracking-wide text-black mix-blend-multiply ${
+            className={`heading-category absolute w-full text-center text-5xl max-md:text-4xl font-bold top-[12%] z-0 tracking-wide text-black mix-blend-multiply ${
               hovered ? "expand-on-hover" : ""
             }`}
           >

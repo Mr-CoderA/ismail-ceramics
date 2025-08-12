@@ -8,8 +8,8 @@ let DUMMY = [];
 
 const OverlayContent = () => (
   <div className="absolute z-10 inset-0 w-full flex flex-col justify-center items-center px-[55px]">
-    <h1 className="text-white text-center max-w-[60rem] max-md:text-5xl max-sm:text-4xl text-5xl !mb-4 font-medium">
-      <span>
+    <h1 className="text-white text-center max-w-[60rem]  !mb-4 font-medium">
+      <span className="max-md:text-3xl max-sm:text-3xl text-5xl">
         <Text text="Showcase your products in action and outline their benefits." />
       </span>
     </h1>
