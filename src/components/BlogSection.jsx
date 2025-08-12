@@ -52,12 +52,12 @@ const MainCard = () => {
   return (
     <div
       ref={containerRef}
-      className="relative flex group translate-y-[50px] opacity-100 transform"
+      className="relative flex max-md:flex-col group translate-y-[50px] opacity-100 transform"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {/* Image Container */}
-      <div className="w-1/2 h-[500px] overflow-hidden rounded-l-2xl">
+      <div className="w-1/2 max-md:w-full h-[500px] max-md:rounded-t-2xl overflow-hidden rounded-l-2xl">
         <img
           src={Blog}
           alt=""
@@ -77,7 +77,7 @@ const MainCard = () => {
         </div>
       </div>
 
-      <div className="w-1/2 flex flex-col justify-between h-full bg-purple-100 rounded-r-2xl !p-10">
+      <div className="w-1/2 flex max-md:w-full flex-col justify-between h-full bg-purple-100 max-md:rounded-b-2xl rounded-r-2xl !p-10">
         <div>
           <h1 className="text-black text-4xl font-semibold !mb-5">
             10 Creative Ways to Use Digital Backgrounds in Your Projects
@@ -125,7 +125,7 @@ const SecondaryCard = ({ item }) => {
   return (
     <div
       ref={containerRef}
-      className="relative rounded-2xl translate-y-[50px] opacity-100 transform min-w-[450px] max-md:w-full h-[350px]"
+      className="relative rounded-2xl translate-y-[50px] opacity-100 transform max-md:w-full h-[350px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

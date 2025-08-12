@@ -38,7 +38,7 @@ export const Footer = () => {
   return (
     <div
       ref={containerRef}
-      className="relative !mt-10 !mb-2 rounded-2xl flex justify-between bg-purple-200/70 h-fit !pt-20 !pb-8 !p-15 translate-y-[50px] opacity-100 transform"
+      className="relative !mt-10 max-md:flex-col !mb-2 rounded-2xl flex justify-between bg-purple-200/70 h-fit !pt-20 !pb-8 !p-15 max-md:!p-10 max-md:!pt-20 translate-y-[50px] opacity-100 transform"
     >
       {/* Logo */}
       <div
@@ -49,7 +49,7 @@ export const Footer = () => {
       </div>
 
       {/* Newsletter */}
-      <div className="w-1/3 gap-10 flex flex-col justify-between">
+      <div className="w-1/3 max-md:w-full gap-10 flex flex-col justify-between">
         <div>
           <p className="text-2xl font-semibold max-w-[400px]">
             Join our newsletter and get 20% off your first purchase with us.
@@ -71,7 +71,7 @@ export const Footer = () => {
       </div>
 
       {/* Links */}
-      <div className="w-1/4 flex">
+      <div className="w-1/4 max-md:w-full max-md:!mt-8 flex">
         {/* Pages */}
         <div className="w-1/2 h-fit">
           <p className="font-semibold !mb-2">Pages</p>
