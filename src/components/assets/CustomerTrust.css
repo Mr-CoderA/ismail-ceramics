@@ -1,0 +1,34 @@
+.fade-wrapper {
+  position: relative;
+  width: 120px; /* match your image size */
+  height: 120px;
+}
+
+.fade-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.fade-wrapper img.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.star {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: popIn 0.4s forwards;
+}
+
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

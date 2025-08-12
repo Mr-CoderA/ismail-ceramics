@@ -1,0 +1,21 @@
+@keyframes wordAppear {
+  0% {
+    opacity: 0;
+    transform: translate(0, 20px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+    filter: blur(0);
+  }
+}
+
+.word {
+  display: inline-block;
+  animation-name: wordAppear;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  opacity: 0; /* start invisible */
+}

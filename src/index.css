@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Nata+Sans:wght@100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nata+Sans:wght@100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+    font-family: "Nata Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling, but doesn't control speed */
+}
+
+button{
+  font-family: "Inter", sans-serif;
+}
+
+
+h1, p{
+  font-family: "Inter", sans-serif;
+}
+/* Pseudo-elements always exist but start instantly hidden */
+#navbar::before,
+#navbar::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-6px); /* start offset */
+  z-index: 10;
+}
+
+/* Positions (hidden state) */
+#navbar::after {
+  left: 8px;
+  top: 62px;
+  border-radius: 20px 0 0 0;
+  box-shadow: -10px -10px 0 10px white;
+}
+#navbar::before {
+  right: -32px;
+  top: -6px;
+  border-radius: 20px 0 0 0;
+  box-shadow: -10px -10px 0 10px white;
+}
+
+/* Visible state — only here we add transition */
+#navbar.navbar::before,
+#navbar.navbar::after {
+  opacity: 1;
+  transform: translateY(0);
+  /* transition: opacity 80ms ease, transform 80ms ease;  */
+}
+
+/* Adjust position when visible */
+#navbar.navbar::before {
+  right: -40px;
+  top: 0;
+}
+#navbar.navbar::after {
+  left: 0;
+  top: 62px;
+}
+
+/* Pseudo-elements always exist but start instantly hidden */
+#buttonCard::before,
+#buttonCard::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  pointer-events: none;
+  opacity: 0;
+  /* background-color: black; */
+  transform: translateY(-6px); /* start offset */
+  z-index: 10;
+}
+
+/* Positions (hidden state) */
+#buttonCard::after {
+  left: 0px;
+  top: 0px;
+  border-radius: 0px 0px 15px 0px;
+  box-shadow: 10px 10px 0 5px white;
+}
+#buttonCard::before {
+  right: 0px;
+  top: 0px;
+  border-radius: 0px 0 15px 0;
+  box-shadow: 6px 5px 0 5px white;
+}
+
+/* Visible state — only here we add transition */
+#buttonCard.buttonCard::before,
+#buttonCard.buttonCard::after {
+  opacity: 1;
+  transform: translateY(0);
+  /* transition: opacity 80ms ease, transform 80ms ease;  */
+}
+
+/* Adjust position when visible */
+#buttonCard.buttonCard::before {
+  right: 0px;
+  top: -21px;
+}
+#buttonCard.buttonCard::after {
+  left: -40px;
+  top: 52px;
+}
+
+/* Pseudo-elements always exist but start instantly hidden */
+.corner-bottom::before,
+.corner-bottom::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  pointer-events: none;
+  opacity: 0;
+  /* background-color: black; */
+  transform: translateY(-6px); /* start offset */
+  z-index: 10;
+}
+
+/* Positions (hidden state) */
+.corner-bottom::after {
+  left: 0px;
+  top: 0px;
+  border-radius: 0px 15px 0px 0px;
+  box-shadow: 10px -10px 0 5px white;
+}
+.corner-bottom::before {
+  right: 0px;
+  top: 0px;
+  border-radius: 0px 15px 0px 0;
+  box-shadow: 10px -5px 0 5px white;
+}
+
+/* Visible state — only here we add transition */
+.corner-bottom#corner-bottom::before,
+.corner-bottom#corner-bottom::after {
+  opacity: 1;
+  transform: translateY(0);
+  /* transition: opacity 80ms ease, transform 80ms ease;  */
+}
+
+/* Adjust position when visible */
+.corner-bottom#corner-bottom::before {
+  right: 0px;
+  top: 72px;
+}
+.corner-bottom#corner-bottom::after {
+  left: -40px;
+  top: 0px;
+}
+
+
+/* Pseudo-elements always exist but start instantly hidden */
+.highlightCard::before,
+.highlightCard::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  pointer-events: none;
+  opacity: 0;
+  /* background-color: black; */
+  transform: translateY(-6px); /* start offset */
+  z-index: 10;
+}
+
+/* Positions (hidden state) */
+.highlightCard::after {
+  left: 0px;
+  top: 0px;
+  border-radius: 15px 0px 0px 0px;
+  box-shadow: -10px -10px 0 5px white;
+}
+.highlightCard::before {
+  right: 0px;
+  top: 0px;
+  border-radius: 15px 0px 0px 0;
+  box-shadow: -10px -5px 0 3px white;
+}
+
+/* Visible state — only here we add transition */
+.highlightCard#highlightCard::before,
+.highlightCard#highlightCard::after {
+  opacity: 1;
+  transform: translateY(0);
+  /* transition: opacity 80ms ease, transform 80ms ease;  */
+}
+
+/* Adjust position when visible */
+.highlightCard#highlightCard::before {
+  left: 0px;
+  top: 68px;
+}
+.highlightCard#highlightCard::after {
+  left: 68px;
+  top: 0px;
+}
+
+
+/* Pseudo-elements always exist but start instantly hidden */
+.blogCorner::before,
+.blogCorner::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  pointer-events: none;
+  opacity: 0;
+  /* background-color: black; */
+  transform: translateY(-6px); /* start offset */
+  z-index: 10;
+}
+
+/* Positions (hidden state) */
+.blogCorner::after {
+  left: 0px;
+  top: 0px;
+  border-radius: 15px 0px 0px 0px;
+  box-shadow: -15px -5px 0 3px white;
+}
+.blogCorner::before {
+  right: 0px;
+  top: 0px;
+  border-radius: 15px 0px 0px 0;
+  box-shadow: -5px -5px 0 3px white;
+}
+
+/* Visible state — only here we add transition */
+.blogCorner#blogCorner::before,
+.blogCorner#blogCorner::after {
+  opacity: 1;
+  transform: translateY(0);
+  /* transition: opacity 80ms ease, transform 80ms ease;  */
+}
+
+/* Adjust position when visible */
+.blogCorner#blogCorner::before {
+  right: -40px;
+  top: 0px;
+}
+.blogCorner#blogCorner::after {
+  left: 0;
+  top: 52px;
+}
+
+@keyframes BlurAppear {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 0px);
+
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, -50px);
+    filter: blur(0);
+  }
+}
+
+.blur-animate {
+
+  animation: BlurAppear 1s ease forwards;
+}
+
+@keyframes elementAppear {
+  0% {
+
+    transform: translate(0px, 20px);
+
+  }
+  50%{
+    transform: translate(0, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+
+  }
+}
+@keyframes deepAppear {
+  0% {
+
+    transform: translate(0px, 0px);
+
+  }
+  100% {
+    transform: translate(0, -50px);
+
+  }
+}
+@keyframes cardAppear {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 20px);
+
+  }
+  50%{
+    opacity: 50;
+    transform: translate(0, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 100;
+
+  }
+}
+
+
+.reload-animate {
+
+  animation: elementAppear 1.5s ease forwards;
+}
+
+.reload-animate-deep {
+
+  animation: deepAppear 1.5s ease forwards;
+}
+
+
+.reload-animate-card{
+  animation: cardAppear 2s ease forwards;
+}
+
+
+.arrow-icon {
+  transition: transform 0.5s ease;
+  transform: rotate(45deg);
+}
+
+.arrow-icon.rotate {
+  transform: rotate(90deg);
+}
+
+img, .heading-category {
+  transition: transform 0.5s ease;
+}
+.expand-on-hover {
+  transform: scale(1.05);
+}
+
+
