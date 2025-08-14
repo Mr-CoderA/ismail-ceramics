@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Icon } from "@iconify/react";
 import Logo from "../assets/logo.png";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -9,7 +10,7 @@ export const Navbar = () => {
   const [offset, setOffset] = useState({ top: 0, left: 0 });
   const [showNavbarClass, setShowNavbarClass] = useState(false);
   const [open, setOpen] = useState(false);
-
+  const navigate = useNavigate();
   const navbarRef = useRef(null);
 
   // Scroll listener
@@ -64,12 +65,12 @@ export const Navbar = () => {
     <div
       ref={navbarRef}
       id="navbar"
-      className={`
+      className={` z-10
     bg-white rounded-[15px] !py-3 !px-5 w-fit h-[62px] flex justify-between gap-6 rounded-br-[15px]
     transition-all ease-in-out
     ${
       !delayedScrolled
-        ? `absolute top-[0px] left-[0px] ${showNavbarClass ? "navbar" : ""}`
+        ? `absolute !top-[20px] ${showNavbarClass ? "navbar" : ""}`
         : `fixed max-md:w-full max-md:left-0 max-md:rounded-[0px] max-md:!top-0 z-50 shadow-md `
     }
   `}
@@ -83,7 +84,7 @@ export const Navbar = () => {
         opacity: delayedScrolled ? 0.98 : scrolled ? 0 : 1,
       }}
     >
-      <div className="flex items-center">
+      <div className="flex items-center" onClick={() => navigate("/")}>
         <img
           className={`w-[106px] ${
             scrolled ? "max-md:w-[110px]" : "max-md:w-[120px]"
@@ -93,7 +94,7 @@ export const Navbar = () => {
         />
       </div>
       <div className="flex gap-1 items-center text-sm max-md:hidden">
-        <Button>Shop</Button>
+        <Button onClick={() => navigate("/shop")}>Shop</Button>
         <Button>Collections</Button>
         <Button>Blog</Button>
         <Button>Support</Button>
@@ -139,7 +140,10 @@ export const Navbar = () => {
             : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
-        <button className="w-full text-left hover:text-gray-600 transition-colors duration-200">
+        <button
+          onClick={() => navigate("/shop")}
+          className="w-full text-left hover:text-gray-600 transition-colors duration-200"
+        >
           Shop
         </button>
         <button className="w-full text-left hover:text-gray-600 transition-colors duration-200">

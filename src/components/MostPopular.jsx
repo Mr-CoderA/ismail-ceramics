@@ -29,10 +29,15 @@ export const MostPopular = () => {
 
   return (
     <div className="!mb-8">
-      <div className="!mt-7 max-md:flex-col max-md:gap-0 flex justify-between gap-4">
+      <div className="!mt-7 max-md:flex-col w-full max-md:gap-0 flex justify-between gap-4">
         {/* With Details */}
         {products.map((p, i) => (
-          <ProductCard key={i} product={p} showDetails={true} />
+          <ProductCard
+            className="!w-full"
+            key={i}
+            product={p}
+            showDetails={true}
+          />
         ))}
 
         {/* Without Details Example */}

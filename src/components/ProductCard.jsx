@@ -5,6 +5,9 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 export const ProductCard = ({
   product = {}, // For default card
   showDetails = true,
+  width = 450,
+  height = 580,
+  className = "",
   imageClass = "w-75",
   variant = "default", // "default" | "highlight"
   title = "Instant Digital Downloads", // For highlight variant
@@ -12,6 +15,7 @@ export const ProductCard = ({
   icon = "akar-icons:arrow-up", // Custom icon
   bgColor = "bg-purple-100", // Card background for highlight
   iconBg = "bg-purple-200/80", // Icon background for highlight
+  imageBGClass = "",
 }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -45,17 +49,20 @@ export const ProductCard = ({
   // Default product card
   return (
     <div
-      className={`w-[450px] max-md:w-full ${
-        showDetails ? "h-[580px]" : "h-[420px]"
-      }`}
+      className={`max-md:w-full ${className}
+      `}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      style={{
+        width: `${width}px`,
+        height: showDetails ? `${height}px` : "420px",
+      }}
     >
       {/* Image Section */}
       <div
         className={`relative ${
           showDetails ? "h-[75%]" : "h-full"
-        } flex flex-col`}
+        } flex flex-col ${imageBGClass}`}
       >
         <div className="flex w-full h-full items-center justify-center bg-purple-50 rounded-2xl">
           <img

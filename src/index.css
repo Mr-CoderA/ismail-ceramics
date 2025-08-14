@@ -269,6 +269,16 @@ h1, p{
   }
 }
 
+@keyframes noBlurAppear {
+  0% {
+    transform: translate(0px, 0px);
+
+  }
+  100% {
+    transform: translate(0, -50px);
+  }
+}
+
 .blur-animate {
 
   animation: BlurAppear 1s ease forwards;
@@ -330,6 +340,10 @@ h1, p{
 
 .reload-animate-card{
   animation: cardAppear 2s ease forwards;
+}
+
+.reload-animate-noblur{
+  animation: noBlurAppear 2s ease forwards;
 }
 
 

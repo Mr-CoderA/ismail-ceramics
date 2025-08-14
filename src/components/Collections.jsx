@@ -49,9 +49,14 @@ export const Collections = () => {
 
   return (
     <div className="!mb-8 translate-y-[50px] transform" ref={containerRef}>
-      <div className="!mt-7 max-md:flex-col max-md:gap-0 flex justify-between !gap-5">
+      <div className="!mt-7 max-md:flex-col w-full max-md:gap-0 flex justify-between !gap-5">
         {products.map((product, i) => (
-          <ProductCard key={i} product={product} showDetails={false} />
+          <ProductCard
+            className="!w-full"
+            key={i}
+            product={product}
+            showDetails={false}
+          />
         ))}
       </div>
     </div>
