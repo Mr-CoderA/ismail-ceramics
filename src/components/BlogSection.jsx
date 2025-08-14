@@ -57,7 +57,7 @@ const MainCard = () => {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Image Container */}
-      <div className="w-1/2 max-md:w-full h-[500px] max-md:rounded-t-2xl overflow-hidden rounded-l-2xl">
+      <div className="w-1/2 max-md:w-full h-[500px] max-md:rounded-t-2xl max-md:rounded-b-[0px] overflow-hidden rounded-l-2xl">
         <img
           src={Blog}
           alt=""
@@ -77,7 +77,7 @@ const MainCard = () => {
         </div>
       </div>
 
-      <div className="w-1/2 flex max-md:w-full flex-col justify-between h-full bg-purple-100 max-md:rounded-b-2xl rounded-r-2xl !p-10">
+      <div className="w-1/2 flex max-md:w-full flex-col justify-between h-[500px] bg-purple-100 max-md:rounded-b-2xl max-md:rounded-r-[0px] rounded-r-2xl !p-10">
         <div>
           <h1 className="text-black text-4xl font-semibold !mb-5">
             10 Creative Ways to Use Digital Backgrounds in Your Projects
@@ -159,10 +159,10 @@ const SecondaryCard = ({ item }) => {
 
 const BlogSection = () => {
   return (
-    <div className="flex flex-col rounded-2xl">
+    <div className="flex !mt-10 flex-col rounded-2xl">
       <MainCard />
 
-      <div className="!mt-12 flex max-md:flex-col gap-10">
+      <div className="!mt-12 flex max-md:flex-col flex-wrap gap-10">
         {DUMMY.map((e) => (
           <SecondaryCard key={e.id} item={e} />
         ))}

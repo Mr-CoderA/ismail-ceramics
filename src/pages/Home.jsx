@@ -2,7 +2,7 @@ import React from "react";
 import { MostPopular } from "../components/MostPopular";
 import { CustomerTrust } from "../components/CustomerTrust";
 import { TitleBar } from "../components/TittleBar";
-import { Collections } from "../components/Collections";
+import { CollectionsTray } from "../components/CollectionsTray";
 import { VideoBanner } from "../components/VideoBanner";
 import { Highlights } from "../components/Highlights";
 import BlogSection from "../components/BlogSection";
@@ -73,7 +73,7 @@ export const Home = () => {
           description="Showcase all your products here with descriptions."
           className="!mt-20"
         />
-        <Collections />
+        <CollectionsTray />
         <VideoBanner />
         <Highlights />
         <TitleBar

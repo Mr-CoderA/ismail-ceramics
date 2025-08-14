@@ -95,9 +95,9 @@ export const Navbar = () => {
       </div>
       <div className="flex gap-1 items-center text-sm max-md:hidden">
         <Button onClick={() => navigate("/shop")}>Shop</Button>
-        <Button>Collections</Button>
-        <Button>Blog</Button>
-        <Button>Support</Button>
+        <Button onClick={() => navigate("/collections")}>Collections</Button>
+        <Button onClick={() => navigate("/blog")}>Blog</Button>
+        <Button onClick={() => navigate("/support")}>Support</Button>
       </div>
       <div
         className={`flex items-center gap-1  ${
@@ -146,13 +146,22 @@ export const Navbar = () => {
         >
           Shop
         </button>
-        <button className="w-full text-left hover:text-gray-600 transition-colors duration-200">
+        <button
+          onClick={() => navigate("/collections")}
+          className="w-full text-left hover:text-gray-600 transition-colors duration-200"
+        >
           Collection
         </button>
-        <button className="w-full text-left hover:text-gray-600 transition-colors duration-200">
+        <button
+          onClick={() => navigate("/blog")}
+          className="w-full text-left hover:text-gray-600 transition-colors duration-200"
+        >
           Blog
         </button>
-        <button className="w-full text-left hover:text-gray-600 transition-colors duration-200">
+        <button
+          onClick={() => navigate("/support")}
+          className="w-full text-left hover:text-gray-600 transition-colors duration-200"
+        >
           Support
         </button>
       </div>

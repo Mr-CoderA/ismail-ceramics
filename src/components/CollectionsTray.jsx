@@ -24,7 +24,7 @@ function useScrollAnimation() {
   return ref;
 }
 
-export const Collections = () => {
+export const CollectionsTray = () => {
   const containerRef = useScrollAnimation();
   const products = [
     {

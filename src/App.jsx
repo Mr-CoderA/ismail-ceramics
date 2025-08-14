@@ -12,6 +12,10 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Shop } from "./pages/Shop";
 import { PageWrapper } from "./components/PageWrapper";
+import { Collections } from "./pages/Collections";
+import { Blog } from "./pages/Blog";
+import { Support } from "./pages/Support";
+import ScrollToTop from "./components/ScrollToTop";
 const ContentWrapper = () => {
   const location = useLocation();
 
@@ -24,6 +28,9 @@ const ContentWrapper = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/collections" element={<Collections />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/support" element={<Support />} />
           {/* add other routes here if needed */}
         </Routes>
       </PageWrapper>
@@ -41,6 +48,7 @@ const App = () => {
     >
       <div className="w-full max-w-[90rem] flex flex-col">
         <Router>
+          <ScrollToTop />
           <ContentWrapper />
         </Router>
       </div>

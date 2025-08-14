@@ -163,6 +163,53 @@ h1, p{
 
 
 /* Pseudo-elements always exist but start instantly hidden */
+.corner-top::before,
+.corner-top::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  pointer-events: none;
+  opacity: 0;
+  /* background-color: black; */
+  transform: translateY(-6px); /* start offset */
+  z-index: 10;
+}
+
+/* Positions (hidden state) */
+.corner-top::after {
+  left: 0px;
+  top: 0px;
+  border-radius: 0px 15px 0px 0px;
+  box-shadow: 10px -10px 0 5px white;
+}
+.corner-top::before {
+  right: 0px;
+  top: 0px;
+  border-radius: 0px 15px 0px 0;
+  box-shadow: 10px -5px 0 5px white;
+}
+
+/* Visible state — only here we add transition */
+.corner-top#corner-top::before,
+.corner-top#corner-top::after {
+  opacity: 1;
+  transform: translateY(0);
+  /* transition: opacity 80ms ease, transform 80ms ease;  */
+}
+
+/* Adjust position when visible */
+.corner-top#corner-top::before {
+  right: 0px;
+  top: 40px;
+}
+.corner-top#corner-top::after {
+  left: -40px;
+  top: 0px;
+}
+
+
+/* Pseudo-elements always exist but start instantly hidden */
 .highlightCard::before,
 .highlightCard::after {
   content: "";
