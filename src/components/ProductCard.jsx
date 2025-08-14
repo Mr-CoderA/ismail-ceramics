@@ -7,6 +7,7 @@ export const ProductCard = ({
   showDetails = true,
   width = 450,
   height = 580,
+  style = {},
   className = "",
   imageClass = "w-75",
   variant = "default", // "default" | "highlight"

@@ -96,20 +96,43 @@ let categories = ["All", ...new Set(products.map((p) => p.category))];
 
 const Cards = ({ filteredProducts }) => {
   const containerRef = useScrollAnimation();
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    console.log(size);
+  }, [size]);
   return (
     <div className="!mb-8">
       <div
         ref={containerRef}
-        className="reload-animate-noblur translate-y-[50px]  w-full opacity-100 transform !mt-7 max-md:!mt-25 max-md:flex-col flex flex-wrap justify-start gap-10 max-[1230px]:gap-0 max-md:gap-10"
+        className="reload-animate-noblur translate-y-[50px]  w-full opacity-100 transform !mt-7 max-md:!mt-25 max-md:flex-col flex flex-wrap justify-start gap-5 max-[1230px]:gap-0 max-md:gap-10"
       >
         {filteredProducts.map((p, i) => (
           <ProductCard
             key={i}
             product={p}
             showDetails={true}
-            className="!w-100  max-md:!w-full max-[1230px]:!w-full max-[1230px]:!h-[800px] max-md:!h-[450px] "
-            imageBGClass="max-[1230px]:!h-[80%] max-md:!h-[75%]"
-            imageClass="max-[1230px]:w-80 max-md:w-60"
+            width={size.width <= 1440 ? 335 : 351}
+            className="  !min-h-150  max-md:!w-full max-[1230px]:!w-full max-[1230px]:!h-[800px] max-md:!h-[450px] "
+            imageBGClass={`max-[1230px]:!h-[80%] max-md:!h-[75%]  ${
+              size.width <= 1440 ? "!h-[60%]" : "!h-[75%]"
+            }`}
+            imageClass="max-[1230px]:w-80 max-md:w-60 w-60"
           />
         ))}
       </div>
