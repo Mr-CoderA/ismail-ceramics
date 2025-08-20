@@ -1,6 +1,7 @@
 // ProductCard.jsx
 import React, { useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useNavigate } from "react-router-dom"; // ✅ Import React Router navigation
 
 export const ProductCard = ({
   product = {}, // For default card
@@ -19,12 +20,19 @@ export const ProductCard = ({
   imageBGClass = "",
 }) => {
   const [hovered, setHovered] = useState(false);
+  const navigate = useNavigate(); // ✅ Hook for navigation
+
+  // ✅ Handle navigation
+  const handleClick = () => {
+    if (showDetails && product.id) {
+      navigate(`/product/${product.id}`);
+    }
+  };
 
   if (variant === "highlight") {
-    // Highlight-style info card
     return (
       <div
-        className={`relative  min-h-[200px] rounded-2xl !p-8 !pt-25 w-[450px] max-md:w-full ${bgColor}`}
+        className={`relative min-h-[200px] rounded-2xl !p-8 !pt-25 w-[450px] max-md:w-full ${bgColor}`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -35,25 +43,21 @@ export const ProductCard = ({
         <div className="absolute bg-white left-0 top-0 !p-2 rounded-br-2xl">
           <div
             id="highlightCard"
-            className={`highlightCard  !p-4 text-xl rounded-full ${iconBg}`}
+            className={`highlightCard !p-4 text-xl rounded-full ${iconBg}`}
           >
-            <Icon
-              className={`arrow-icon rotate-315 font-semibold `}
-              icon={icon}
-            />
+            <Icon className="arrow-icon rotate-315 font-semibold" icon={icon} />
           </div>
         </div>
       </div>
     );
   }
 
-  // Default product card
   return (
     <div
-      className={`max-md:w-full ${className}
-      `}
+      className={`max-md:w-full ${className} cursor-pointer`} // ✅ Make it look clickable
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={handleClick} // ✅ Navigate on click
       style={{
         width: `${width}px`,
         height: showDetails ? `${height}px` : "420px",

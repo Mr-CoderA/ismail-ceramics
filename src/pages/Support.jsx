@@ -57,6 +57,23 @@ const OverlayContent = () => {
     </div>
   );
 };
+const QA_DATA = [
+  {
+    question: "How do I access my digital downloads after purchase?",
+    answer:
+      "Once your purchase is complete, you’ll receive an email with a download link. You can also access your downloads directly from your account page.",
+  },
+  {
+    question: "Can I get a refund for a digital product?",
+    answer:
+      "Refunds for digital products are only available if the product has not been downloaded or accessed.",
+  },
+  {
+    question: "Do digital products expire after download?",
+    answer:
+      "No, once downloaded, your digital products are yours to keep forever.",
+  },
+];
 
 export const Support = () => {
   const containerRef = useScrollAnimation();
@@ -79,7 +96,7 @@ export const Support = () => {
               </p>
             </div>
             <div>
-              <QADrop />
+              <QADrop array={QA_DATA} />
             </div>
           </div>
           <div

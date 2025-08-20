@@ -6,18 +6,21 @@ import Brick from "../assets/brick.png";
 export const MostPopular = () => {
   const products = [
     {
+      id: 1,
       name: "Standard Brick",
       category: "Engineer Products",
       price: "USD $5.00",
       image: Brick,
     },
     {
+      id: 2,
       name: "Premium Brick",
       category: "Luxury Products",
       price: "USD $8.00",
       image: Brick,
     },
     {
+      id: 3,
       name: "Eco Brick",
       category: "Sustainable Products",
       price: "USD $6.50",

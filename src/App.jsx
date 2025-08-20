@@ -16,6 +16,7 @@ import { Collections } from "./pages/Collections";
 import { Blog } from "./pages/Blog";
 import { Support } from "./pages/Support";
 import ScrollToTop from "./components/ScrollToTop";
+import { ProductView } from "./pages/ProductView";
 const ContentWrapper = () => {
   const location = useLocation();
 
@@ -31,6 +32,9 @@ const ContentWrapper = () => {
           <Route path="/collections" element={<Collections />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/support" element={<Support />} />
+
+          <Route path="/product/:id" element={<ProductView />} />
+
           {/* add other routes here if needed */}
         </Routes>
       </PageWrapper>
