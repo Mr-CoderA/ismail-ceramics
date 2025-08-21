@@ -31,11 +31,17 @@ const ContentWrapper = () => {
       <PageWrapper key={location.pathname}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/collections" element={<Collections />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/support" element={<Support />} />
-          <Route path="/product/:id" element={<ProductView />} />
+          <Route path="/shop" element={<Shop minHeight={500} />} />
+          <Route
+            path="/collections"
+            element={<Collections minHeight={500} />}
+          />
+          <Route path="/blog" element={<Blog minHeight={500} />} />
+          <Route path="/support" element={<Support minHeight={500} />} />
+          <Route
+            path="/product/:id"
+            element={<ProductView minHeight={500} />}
+          />
         </Routes>
       </PageWrapper>
       <Footer />
