@@ -1,68 +1,82 @@
 import React, { useEffect, useRef, useState } from "react";
-import Blog from "../assets/blog.png";
-import BG2 from "../assets/bg-2.jpg";
-import Person from "../assets/person.png";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import BlogImage from "../assets/blog.png";
+import BackgroundImage from "../assets/bg-2.jpg";
+import AuthorImage from "../assets/person.png";
 
-const DUMMY = [
+// Static data for blog posts
+const POSTS = [
   {
     id: 1,
     description: "The Beginner’s Guide to Using Mockups for Your Brand",
     topic: "Guides",
-    img: BG2,
+    image: BackgroundImage,
   },
   {
     id: 2,
     description: "How to Choose the Perfect Color Palette for Your Project",
     topic: "Tips",
-    img: BG2,
+    image: BackgroundImage,
   },
   {
     id: 3,
     description: "Design Systems: Making Reusable UI the Right Way",
     topic: "Design",
-    img: BG2,
+    image: BackgroundImage,
   },
 ];
 
+/**
+ * Custom hook to apply scroll-based animation using IntersectionObserver.
+ * Adds 'blur-animate' class when the element enters the viewport.
+ * @returns {React.MutableRefObject} Reference to the observed element
+ */
 function useScrollAnimation() {
-  const ref = useRef();
+  const elementRef = useRef(null);
 
   useEffect(() => {
-    const el = ref.current;
+    const element = elementRef.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("blur-animate");
+          element.classList.add("blur-animate");
         }
       },
       { threshold: 0.2 }
     );
-    if (el) observer.observe(el);
+
+    observer.observe(element);
     return () => observer.disconnect();
   }, []);
 
-  return ref;
+  return elementRef;
 }
 
+/**
+ * MainCard component displaying a featured blog post with hover effects.
+ * @returns {JSX.Element} The main blog card component
+ */
 const MainCard = () => {
-  const [hovered, setHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const containerRef = useScrollAnimation();
 
   return (
     <div
       ref={containerRef}
       className="relative flex max-md:flex-col group translate-y-[50px] opacity-100 transform"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image Container */}
       <div className="w-1/2 max-md:w-full h-[500px] max-md:rounded-t-2xl max-md:rounded-b-[0px] overflow-hidden rounded-l-2xl">
         <img
-          src={Blog}
-          alt=""
+          src={BlogImage}
+          alt="Featured blog post"
           className={`w-full h-full object-cover ${
-            hovered ? "expand-on-hover" : ""
+            isHovered ? "expand-on-hover" : ""
           }`}
         />
       </div>
@@ -77,6 +91,7 @@ const MainCard = () => {
         </div>
       </div>
 
+      {/* Content Section */}
       <div className="w-1/2 flex max-md:w-full flex-col justify-between h-[500px] bg-purple-100 max-md:rounded-b-2xl max-md:rounded-r-[0px] rounded-r-2xl !p-10">
         <div>
           <h1 className="text-black text-4xl font-semibold !mb-5">
@@ -95,7 +110,9 @@ const MainCard = () => {
             className="buttonCard !p-4 text-xl rounded-full bg-purple-200/80"
           >
             <Icon
-              className={`arrow-icon font-semibold ${hovered ? "rotate" : ""}`}
+              className={`arrow-icon font-semibold ${
+                isHovered ? "rotate" : ""
+              }`}
               icon="akar-icons:arrow-up"
             />
           </div>
@@ -103,7 +120,11 @@ const MainCard = () => {
 
         {/* Author Info */}
         <div className="flex gap-3 items-center">
-          <img className="w-10 h-10 rounded-full" src={Person} alt="" />
+          <img
+            className="w-10 h-10 rounded-full"
+            src={AuthorImage}
+            alt="Author"
+          />
           <div>
             <p className="font-semibold text-md text-black">
               Written by Sarah Miller
@@ -118,23 +139,33 @@ const MainCard = () => {
   );
 };
 
+/**
+ * SecondaryCard component for displaying individual blog posts.
+ * @param {Object} props - Component props
+ * @param {Object} props.item - Blog post data
+ * @param {number} props.item.id - Unique identifier for the post
+ * @param {string} props.item.description - Blog post description
+ * @param {string} props.item.topic - Blog post topic
+ * @param {string} props.item.image - Blog post image URL
+ * @returns {JSX.Element} The secondary blog card component
+ */
 const SecondaryCard = ({ item }) => {
-  const [hovered, setHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const containerRef = useScrollAnimation();
 
   return (
     <div
       ref={containerRef}
       className="relative rounded-2xl translate-y-[50px] opacity-100 transform max-md:w-full h-[350px]"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="w-full h-[75%] rounded-2xl overflow-hidden">
         <img
-          src={item.img}
-          alt=""
+          src={item.image}
+          alt={item.description}
           className={`w-full h-full object-cover ${
-            hovered ? "expand-on-hover" : ""
+            isHovered ? "expand-on-hover" : ""
           }`}
         />
       </div>
@@ -157,14 +188,26 @@ const SecondaryCard = ({ item }) => {
   );
 };
 
+SecondaryCard.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    topic: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+/**
+ * BlogSection component to display a featured blog post and a list of secondary posts.
+ * @returns {JSX.Element} The blog section component
+ */
 const BlogSection = () => {
   return (
     <div className="flex !mt-10 flex-col rounded-2xl">
       <MainCard />
-
       <div className="!mt-12 flex max-md:flex-col flex-wrap gap-10">
-        {DUMMY.map((e) => (
-          <SecondaryCard key={e.id} item={e} />
+        {POSTS.map((post) => (
+          <SecondaryCard key={post.id} item={post} />
         ))}
       </div>
     </div>
